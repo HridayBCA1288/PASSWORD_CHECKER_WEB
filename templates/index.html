@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1020">
+    <title>Password Security Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <div class="logo">🔐</div>
+            <p class="eyebrow">PERSONAL SECURITY TOOL</p>
+            <h1>Password <span>Strength</span> Checker</h1>
+            <p class="subtitle">
+                Check a test password and learn how to make it stronger.
+            </p>
+        </header>
+
+        <section class="card">
+            <label for="password">Enter a test password</label>
+
+            <div class="password-wrapper">
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Type a test password..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    maxlength="1024"
+                >
+                <button id="toggle" type="button" aria-label="Show password">
+                    Show
+                </button>
+            </div>
+
+            <div class="strength-heading">
+                <span>Strength level</span>
+                <strong id="strength">Not rated</strong>
+            </div>
+
+            <div class="meter" role="progressbar"
+                 aria-label="Password strength"
+                 aria-valuemin="0" aria-valuemax="100"
+                 aria-valuenow="0" id="meter">
+                <div id="meter-fill"></div>
+            </div>
+
+            <p id="status" class="status" aria-live="polite">
+                Enter a password to begin.
+            </p>
+
+            <div class="suggestion-box">
+                <h2>Security recommendations</h2>
+                <ul id="suggestions">
+                    <li>Use a long, unique password.</li>
+                    <li>Avoid predictable words and patterns.</li>
+                </ul>
+            </div>
+
+            <button id="clear" class="clear-button" type="button">
+                Clear password
+            </button>
+        </section>
+
+        
+<section class="card generator-card">
+    <div class="generator-heading">
+        <span class="generator-icon">⚡</span>
+        <div>
+            <h2>Secure Password Generator</h2>
+            <p>Create a random password using secure randomness.</p>
+        </div>
+    </div>
+
+    <div class="length-heading">
+        <label for="password-length">Password length</label>
+        <strong id="length-value">16</strong>
+    </div>
+
+    <input
+        id="password-length"
+        class="length-slider"
+        type="range"
+        min="8"
+        max="64"
+        value="16"
+    >
+
+    <div class="length-limits">
+        <span>8 characters</span>
+        <span>64 characters</span>
+    </div>
+
+    <div class="generator-options">
+        <label class="option">
+            <input type="checkbox" id="gen-uppercase" checked>
+            <span>Uppercase (A–Z)</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" id="gen-lowercase" checked>
+            <span>Lowercase (a–z)</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" id="gen-numbers" checked>
+            <span>Numbers (0–9)</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" id="gen-symbols" checked>
+            <span>Symbols (!@#...)</span>
+        </label>
+    </div>
+
+    <button id="generate-button" class="clear-button" type="button">
+        ⚡ Generate Secure Password
+    </button>
+
+    <div id="generated-result" class="generated-result" hidden>
+        <label for="generated-password">Your generated password</label>
+
+        <div class="password-wrapper">
+            <input
+                id="generated-password"
+                type="password"
+                readonly
+                autocomplete="off"
+                spellcheck="false"
+            >
+            <button id="toggle-generated" type="button">Show</button>
+        </div>
+
+        <button id="copy-generated" class="copy-button" type="button">
+            Copy password
+        </button>
+
+        <p id="generator-status" class="generator-status"
+           aria-live="polite"></p>
+    </div>
+</section>
+
+
+        <section class="tips">
+            <h2>What makes a password stronger?</h2>
+            <div class="tip-grid">
+                <div class="tip">
+                    <span>01</span>
+                    <h3>Length</h3>
+                    <p>Prefer a long passphrase of 12–16+ characters.</p>
+                </div>
+                <div class="tip">
+                    <span>02</span>
+                    <h3>Uniqueness</h3>
+                    <p>Use a different password for every account.</p>
+                </div>
+                <div class="tip">
+                    <span>03</span>
+                    <h3> unpredictability</h3>
+                    <p>Avoid personal details and common patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Educational tool · Passwords are processed by your local Flask app.
+            Do not enter passwords you actually use.
+        </footer>
+    </main>
+</body>
+</html>
